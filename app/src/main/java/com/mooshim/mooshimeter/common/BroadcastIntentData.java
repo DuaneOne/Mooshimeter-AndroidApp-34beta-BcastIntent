@@ -37,7 +37,7 @@ public class BroadcastIntentData  {
             intent.putExtra("value2", valCH2.value);
             intent.putExtra("units3", val.units);     // key, value pair for MATH
             intent.putExtra("value3", val.value);
-            intent.setAction("com.mooshim.mooshimeter.CH1-3");
+            intent.setAction("com.mooshim.mooshimeter.CH");
             try {
                 Util.getRootContext().sendBroadcast(intent);  // context must come from an activity or MyApplication
             } catch (Exception e) {
