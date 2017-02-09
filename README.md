@@ -18,7 +18,7 @@ intent.putExtra("units3", val.units);     // key, value pair for MATH
 
 intent.putExtra("value3", val.value);
 
-intent.setAction("com.mooshim.mooshimeter.CH1-3");
+intent.setAction("com.mooshim.mooshimeter.CH");
 
 2.  BroadcastIntentData used to be called by devices.MooshimeterDevice and devices.Legacy.MooshimeterDevice.  However, this technique would only broadcast CH1 and CH2, but not MATH.  So, now BroadcastIntentData is called from activities.DeviceActivity which will send all three channels, including MATH.
 
@@ -28,7 +28,7 @@ Some Notes:  To use these features, you have two choices.  Either download the o
 
 Turn on the global setting in the android app for broadcast intents.   The global setting page is the same page used to set temperature readings to C or F. 
 
-Set the receiver action to “com.mooshim.mooshimeter.CH1-3”.   There may be many intents sent by other apps on the phone and this acts as a first level filter for the receiver.  
+Set the receiver action to “com.mooshim.mooshimeter.CH”.   There may be many intents sent by other apps on the phone and this acts as a first level filter for the receiver.  
 
 Once the receiver gets the intent, you can utilize any or all of the six variables (extras) as key:value pairs.  The keys are “value1”, “units1”,  “value2”, “units2”,  “value3”, “units3”  and the values are meter readings and units for the channel.  
 
