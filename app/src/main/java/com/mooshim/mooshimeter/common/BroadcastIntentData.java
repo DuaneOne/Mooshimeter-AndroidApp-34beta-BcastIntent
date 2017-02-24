@@ -13,10 +13,11 @@ public class BroadcastIntentData  {
     static MeterReading valCH1;
     static MeterReading valCH2;
     //public void run(){}
-    public static void broadcastMeterReading(MooshimeterControlInterface.Channel c, MeterReading val) {
+    public static void broadcastMeterReading(MooshimeterControlInterface.Channel c, MeterReading val, float batteryVoltage) {
         /*  8Feb2017  broadcast the intent containing CH1, CH2, and MATH.  Any and all receivers on the android device
            will receive the intent if the receiver has an action filter of   com.mooshim.mooshimeter.CH1-3
            Broadcast receivers can easily use the data in key:value pair format.
+           24Feb2017  Also broadcast battery voltage.
         */
 
         if (c == MooshimeterControlInterface.Channel.CH1) {
@@ -37,6 +38,7 @@ public class BroadcastIntentData  {
             intent.putExtra("value2", valCH2.value);
             intent.putExtra("units3", val.units);     // key, value pair for MATH
             intent.putExtra("value3", val.value);
+            intent.putExtra("moobat", batteryVoltage);   // mooshimeter battery
             intent.setAction("com.mooshim.mooshimeter.CH");
             try {
                 Util.getRootContext().sendBroadcast(intent);  // context must come from an activity or MyApplication

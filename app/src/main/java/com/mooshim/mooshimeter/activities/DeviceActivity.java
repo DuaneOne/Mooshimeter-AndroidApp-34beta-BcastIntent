@@ -656,8 +656,9 @@ public class DeviceActivity extends MyActivity implements MooshimeterDelegate {
         // 8Feb2017  For any channel with new readings, send to broadcast intents.
         // This will send each of the three channels (CH1,CH2,MATH), one each time.
         // BroadcastIntentData stores each channel until all three are received, then broadcast.
+        // 24Feb2017  Also send battery voltage to be broadcast
         if(Util.getPreferenceBoolean(Util.preference_keys.BROADCAST_INTENTS)) {
-                BroadcastIntentData.broadcastMeterReading(c,val);
+                BroadcastIntentData.broadcastMeterReading(c,val,battery_voltage);
         }
     }
 
